@@ -1,167 +1,220 @@
-# ✈ SkyBook Pro
+# ✈️ SkyBook Pro
 
-## 📖 Overview
+## Salesforce Airline Booking Management System
 
-SkyBook Pro is a Salesforce-based Airline Booking Management System developed using Lightning Web Components (LWC), Apex, Salesforce Flows, and the Duffel Flight API. The application enables users to search flights, book tickets, manage bookings, cancel bookings, track refunds, and provides an Agent Dashboard for monitoring booking activities.
+SkyBook Pro is a Salesforce-based Airline Booking Management System developed as part of the **Wipro Salesforce Capstone Project**.
+
+The application enables users to search flights using the **Duffel API**, select flights, enter passenger details, complete a simulated payment process, manage bookings, cancel bookings, process refunds, and monitor bookings through interactive dashboards built using Salesforce Lightning Web Components (LWC) and Apex.
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
-### ✈ Flight Booking
-- Search Flights using Duffel Flight API
-- Display Available Flight Results
-- Flight Selection
-- Passenger Details Form
+### ✈ Flight Search
+- Search one-way flights
+- Search using Origin, Destination and Departure Date
+- Real-time flight search using Duffel API
+
+### 🛫 Flight Selection
+- View available flights
+- Airline information
+- Flight Number
+- Departure & Arrival Time
+- Duration
+- Cabin Class
+- Fare Details
+
+### 👤 Passenger Details
+- Passenger Information Form
+- Passport Number
+- Passenger Type
+- Email Validation
+
+### 📋 Booking Confirmation
+- Flight Summary
+- Passenger Summary
+- Fare Summary
+- Terms & Conditions
+
+### 💳 Payment Gateway
+- Credit / Debit Card (Demo)
+- UPI (Demo)
+- Net Banking (Demo)
+- Payment Success Screen
+
+### ✅ Booking Success
 - Booking Confirmation
-- Secure Payment Gateway
-- Booking Success Page
+- Booking Summary
+- Book Another Flight
 
-### 📚 Booking Management
-- My Bookings Dashboard
-- Booking Detail View
-- Cancel Booking
-- Refund Status Tracker
+### 📖 My Bookings Dashboard
+- View all bookings
+- Booking Details
+- Booking Status
+- Booking Cancellation
+- Booking History
 
-### 👨‍💼 Agent Dashboard
+### 📊 Agent Dashboard
 - Total Bookings
 - Confirmed Bookings
 - Cancelled Bookings
-- Revenue Summary
+- Revenue
 - Pending Refunds
 - Passenger Search
-- Booking Details
-- Refund Details
+- Recent Bookings
+- Recent Refunds
 
 ### ⚙ Salesforce Automation
-- ✅ Booking Confirmation Flow (Activated)
-- ✅ Booking Cancellation Trigger
-- Lightning Message Service (LMS)
-- Reports & Dashboards
+- Booking Confirmation Flow
+- Booking Cancellation Trigger
+- Refund Record Creation
+- Lightning Message Service Refresh
 
 ---
 
-# 🛠 Technologies Used
+# ⚠️ Important Note
 
-- Salesforce Platform
-- Lightning Web Components (LWC)
-- Apex
-- SOQL
-- HTML
-- CSS
-- JavaScript
-- Salesforce Flow
-- Lightning Message Service (LMS)
-- Duffel Flight API
-- Git & GitHub
-- Jest (LWC Unit Testing)
+The **Payment Gateway** implemented in this project is a **simulated payment module** created solely for demonstration as part of the Salesforce Capstone Project.
+
+- No real payment transactions are processed.
+- No credit/debit card or UPI information is stored.
+- No banking systems are connected.
+- No payment gateway APIs (Stripe, Razorpay, PayPal, etc.) are integrated.
+- The payment screen demonstrates the booking workflow only.
+
+This project is intended for **educational, learning, and portfolio purposes only**.
 
 ---
 
-# 📂 Lightning Web Components
+# 🛠 Technology Stack
 
-- skyBookApp
-- flightSearchForm
-- flightResultsList
-- flightResultCard
-- passengerDetailsForm
-- bookingConfirmation
-- paymentGateway
-- bookingSuccess
-- myBookingsDashboard
-- bookingDetailView
-- cancellationModal
-- refundStatusTracker
-- agentDashboard
+| Technology | Used |
+|------------|------|
+| Salesforce Platform | ✅ |
+| Lightning Web Components (LWC) | ✅ |
+| Apex | ✅ |
+| SOQL | ✅ |
+| Salesforce Flow | ✅ |
+| Lightning Message Service | ✅ |
+| Platform Events | ✅ |
+| Duffel Flight API | ✅ |
+| VS Code | ✅ |
+| Git & GitHub | ✅ |
+| Jest Testing | ✅ |
 
 ---
 
-# 📂 Apex Classes
+# 📂 Project Structure
 
+```
+SkyBookPro
+│
+├── Apex Classes
+│
+├── Lightning Web Components
+│     ├── SkyBookApp
+│     ├── FlightSearchForm
+│     ├── FlightResultsList
+│     ├── FlightResultCard
+│     ├── PassengerDetailsForm
+│     ├── BookingConfirmation
+│     ├── PaymentGateway
+│     ├── BookingSuccess
+│     ├── MyBookingsDashboard
+│     └── AgentDashboard
+│
+├── Triggers
+├── Flows
+├── Message Channels
+├── Reports
+├── Dashboards
+└── Static Resources
+```
+
+---
+
+# 🏗 Salesforce Components
+
+## Apex Classes
+
+- BookingService
 - DuffelService
 - DuffelFlightSearchService
 - DuffelFlightPricingService
-- BookingService
-- BookingServiceTest
-- BookingTrigger
-- BookingTriggerHandler
-- BookingCancellationService
+- AgentDashboardService
 - BookingController
 - BookingDashboardService
 - BookingDetailService
-- AgentDashboardService
-- RefundService
+- BookingCancellationService
 - DashboardController
+- FlightService
+- RefundService
 
 ---
 
-# 📊 Salesforce Features
+## Lightning Web Components
 
-- Custom Objects
-- Validation Rules
-- Formula Fields
-- Roll-Up Summary Fields
-- Apex Triggers
-- Apex Classes
-- Test Classes
-- Lightning Message Service
-- Reports
-- Dashboards
-- Flow Automation
-- Permission Sets
-- Profiles
-- Sharing Settings
+- SkyBookApp
+- FlightSearchForm
+- FlightResultsList
+- FlightResultCard
+- PassengerDetailsForm
+- BookingConfirmation
+- PaymentGateway
+- BookingSuccess
+- MyBookingsDashboard
+- AgentDashboard
+
+---
+
+## Salesforce Automation
+
+### Flow
+
+- Booking Confirmation Flow
+
+### Trigger
+
+- Booking Trigger
+- BookingTriggerHandler
+- Booking Cancellation Logic
+- Refund Creation
 
 ---
 
 # 🧪 Testing
 
-- Apex Test Classes
-- LWC Jest Tests
-- 13 Jest Test Suites Passed
-- 13 Jest Tests Passed
+### Apex Tests
+
+- BookingServiceTest
+- Trigger Test Classes
+
+### Jest Testing
+
+Successfully created and executed Jest test cases for Lightning Web Components.
+
+Tested Components:
+
+- BookingConfirmation
+- FlightResultCard
+
+All Jest tests passed successfully.
 
 ---
 
-# 🔄 Application Flow
+# 🔐 API Security
 
-```
-Search Flights
-      │
-      ▼
-Select Flight
-      │
-      ▼
-Passenger Details
-      │
-      ▼
-Booking Confirmation
-      │
-      ▼
-Payment Gateway
-      │
-      ▼
-Booking Success
-      │
-      ▼
-My Bookings Dashboard
-      │
-      ▼
-Booking Details
-      │
-      ▼
-Cancel Booking
-      │
-      ▼
-Refund Tracker
-      │
-      ▼
-Agent Dashboard
-```
+For security reasons, this repository **does not include live API credentials**.
+
+- Duffel API Token removed
+- Authorization keys removed
+- Secrets are excluded from the repository
+
+Anyone using this project should configure their own API credentials before running the application.
 
 ---
 
-# ⚙ Installation
+# ⚙️ Installation
 
 Clone the repository
 
@@ -169,23 +222,59 @@ Clone the repository
 git clone https://github.com/rakshitajadhav17/SKYBOOKPRO.git
 ```
 
-Open the project in VS Code.
+Move into project
 
-Authorize your Salesforce Org.
+```bash
+cd SKYBOOKPRO
+```
 
-Deploy the source.
+Install Dependencies
+
+```bash
+npm install
+```
+
+Authorize Salesforce Org
+
+```bash
+sf org login web
+```
+
+Deploy Source
 
 ```bash
 sf project deploy start
 ```
 
+Run Jest Tests
+
+```bash
+npm test
+```
+
 ---
 
-# 🔐 Important Note
+# ⭐ Project Highlights
 
-This project integrates with the Duffel Flight API.
-
-For security reasons, API keys have been removed from the source code. Configure your own Duffel API credentials before running the project.
+- Salesforce Capstone Project
+- Complete Airline Booking Workflow
+- Lightning Web Components (LWC)
+- Apex Programming
+- Duffel Flight API Integration
+- Simulated Payment Gateway
+- Passenger Management
+- Booking Confirmation
+- Booking Cancellation
+- Refund Processing
+- Agent Dashboard
+- My Bookings Dashboard
+- Salesforce Flow Automation
+- Trigger Automation
+- Lightning Message Service
+- Reports & Dashboards
+- Jest Testing
+- Git Version Control
+- GitHub Repository
 
 ---
 
@@ -193,19 +282,11 @@ For security reasons, API keys have been removed from the source code. Configure
 
 **Rakshita Jadhav**
 
-Salesforce Developer | Lightning Web Components | Apex | Salesforce Admin
+Salesforce Developer | Java Full Stack Developer
+
+GitHub:
+https://github.com/rakshitajadhav17
 
 ---
 
-# ⭐ Project Highlights
-
-- Complete Airline Booking System
-- Real-Time Flight Search using Duffel API
-- Secure Payment Flow
-- Automated Booking Confirmation
-- Booking Cancellation using Apex Trigger
-- Refund Tracking
-- Interactive Agent Dashboard
-- Responsive Lightning Web Components
-- Jest Unit Testing
-- Salesforce Reports & Dashboards
+## ⭐ If you found this project useful, please consider giving it a star on GitHub!
