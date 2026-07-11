@@ -29,7 +29,7 @@ export default class flightSearchForm extends LightningElement {
     cabinOptions = [
         { label: 'Economy', value: 'Economy' },
         { label: 'Business', value: 'Business' },
-        { label: 'First', value: 'First' }
+        { label: 'First Class', value: 'First Class' }
     ];
 
     connectedCallback() {
