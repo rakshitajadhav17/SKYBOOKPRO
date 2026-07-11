@@ -1,0 +1,76 @@
+<template>
+
+    <lightning-card title="Passenger Details">
+
+        <div class="slds-p-around_medium">
+
+            <template for:each={passengers} for:item="passenger">
+
+                <div key={passenger.id} class="slds-box slds-m-bottom_medium">
+
+                    <h3>Passenger {passenger.id}</h3>
+
+                    <lightning-input
+                        label="First Name"
+                        data-id={passenger.id}
+                        data-field="firstName"
+                        onchange={handleChange}>
+                    </lightning-input>
+
+                    <lightning-input
+                        label="Last Name"
+                        data-id={passenger.id}
+                        data-field="lastName"
+                        onchange={handleChange}>
+                    </lightning-input>
+
+
+                    <lightning-input
+                    label="Email"
+                    type="email"
+                    data-id={passenger.id}
+                    data-field="email"
+                    value={passenger.email}
+                    onchange={handleChange}>
+                </lightning-input>
+
+                    <lightning-input
+                        type="date"
+                        label="Date of Birth"
+                        data-id={passenger.id}
+                        data-field="dob"
+                        onchange={handleChange}>
+                    </lightning-input>
+
+                    <lightning-combobox
+                        label="Passenger Type"
+                        value={passenger.type}
+                        options={passengerTypes}
+                        data-id={passenger.id}
+                        data-field="type"
+                        onchange={handleChange}>
+                    </lightning-combobox>
+
+                    <lightning-input
+                        label="Passport Number"
+                        data-id={passenger.id}
+                        data-field="passport"
+                        onchange={handleChange}>
+                    </lightning-input>
+
+                </div>
+
+            </template>
+
+            <lightning-button
+                class="slds-m-top_medium"
+                variant="brand"
+                label="Continue"
+                onclick={handleContinue}>
+            </lightning-button>
+
+        </div>
+
+    </lightning-card>
+
+</template>

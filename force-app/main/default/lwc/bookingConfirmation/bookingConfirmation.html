@@ -1,0 +1,77 @@
+<template>
+
+    <lightning-card title="Booking Confirmation">
+
+        <div class="slds-p-around_large">
+
+            <h2 class="slds-text-heading_medium">
+                ✈ Flight Details
+            </h2>
+
+            <br/>
+
+            <p><b>Airline :</b> {airline}</p>
+
+            <p><b>Origin :</b> {origin}</p>
+
+            <p><b>Destination :</b> {destination}</p>
+
+            <p><b>Flight :</b> {flightNumber}</p>
+
+            <p><b>Cabin :</b> {cabinClass}</p>
+
+            
+
+            <br/>
+
+            <h2 class="slds-text-heading_medium">
+                👤 Passenger
+            </h2>
+
+            <br/>
+
+            <p><b>Name :</b> {passengerName}</p>
+
+            <p><b>Passenger Type :</b> {passengerType}</p>
+
+            <br/>
+
+            <h2 class="slds-text-heading_medium">
+                💰 Fare Summary
+            </h2>
+
+            <br/>
+
+            <p><b>Total Amount :</b> ₹ {price}</p>
+
+            <br/>
+
+            <lightning-input
+
+                type="checkbox"
+
+                label="I accept Terms & Conditions"
+
+                checked={acceptedTerms}
+
+                onchange={handleTerms}>
+
+            </lightning-input>
+
+            <br/>
+
+            <lightning-button
+
+                variant="brand"
+
+                label="Proceed To Payment"
+
+                onclick={confirmBooking}>
+
+            </lightning-button>
+
+        </div>
+
+    </lightning-card>
+
+</template>

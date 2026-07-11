@@ -1,0 +1,73 @@
+<template>
+    <lightning-card title="Search Flights" icon-name="utility:travel_and_places">
+
+        <div class="slds-p-around_medium">
+
+            <lightning-radio-group
+                label="Trip Type"
+                options={tripOptions}
+                value={tripType}
+                onchange={handleTripTypeChange}>
+            </lightning-radio-group>
+
+            <lightning-input
+                label="Origin Airport"
+                value={origin}
+                onchange={handleOriginChange}>
+            </lightning-input>
+
+            <lightning-input
+                label="Destination Airport"
+                value={destination}
+                onchange={handleDestinationChange}>
+            </lightning-input>
+
+            <lightning-input
+                type="date"
+                label="Departure Date"
+                value={departureDate}
+                onchange={handleDepartureChange}>
+            </lightning-input>
+
+            <template if:true={isRoundTrip}>
+                <lightning-input
+                    type="date"
+                    label="Return Date"
+                    value={returnDate}
+                    onchange={handleReturnChange}>
+                </lightning-input>
+            </template>
+
+            <lightning-combobox
+                label="Cabin Class"
+                value={cabinClass}
+                options={cabinOptions}
+                onchange={handleCabinChange}>
+            </lightning-combobox>
+
+            <lightning-input
+                type="number"
+                label="Adults"
+                min="1"
+                value={adults}
+                onchange={handleAdultsChange}>
+            </lightning-input>
+
+            <br/>
+
+            <lightning-button
+                variant="brand"
+                label="Search Flights"
+                onclick={handleSearch}>
+            </lightning-button>
+
+            <template if:true={isLoading}>
+                <lightning-spinner
+                    alternative-text="Searching Flights">
+                </lightning-spinner>
+            </template>
+
+        </div>
+
+    </lightning-card>
+</template>

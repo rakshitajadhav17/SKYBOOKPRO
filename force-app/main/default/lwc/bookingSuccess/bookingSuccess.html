@@ -1,0 +1,53 @@
+<template>
+
+    <lightning-card title="Booking Successful">
+
+        <div class="slds-p-around_large slds-align_absolute-center">
+
+            <div class="slds-text-align_center">
+
+                <div style="font-size:60px;">
+                    ✅
+                </div>
+
+                <h1 class="slds-text-heading_large">
+                    Booking Confirmed
+                </h1>
+
+                <br/>
+
+                <p>
+                    <b>Passenger :</b>
+                    {passengerName}
+                </p>
+
+                <p>
+                    <b>Airline :</b>
+                    {airline}
+                </p>
+
+                <p>
+                    <b>Route :</b>
+                    {origin} → {destination}
+                </p>
+
+                <p>
+                    <b>Seat Class :</b>
+                    {seatClass}
+                </p>
+
+                <br/>
+
+                <lightning-button
+                    variant="brand"
+                    label="Book Another Flight"
+                    onclick={bookAnotherFlight}>
+                </lightning-button>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

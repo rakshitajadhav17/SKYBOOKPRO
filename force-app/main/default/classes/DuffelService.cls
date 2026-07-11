@@ -9,9 +9,13 @@ public with sharing class DuffelService {
         req.setMethod('GET');
 
         req.setHeader('Duffel-Version', 'v2');
-        req.setHeader('Authorization','Bearer duffel_test__CAM1cJj9UGc35b3Bm-szB2opq1b_mvdLmlBmtie7L1');
+       req.setHeader('Authorization',' Bearer YOUR_DUFFEL_API_KEY');
 
         HttpResponse res = http.send(req);
+
+        System.debug('STATUS CODE = ' + res.getStatusCode());
+        System.debug('STATUS = ' + res.getStatus());
+        System.debug('BODY = ' + res.getBody());
 
         return res.getBody();
     }
@@ -30,8 +34,7 @@ public with sharing class DuffelService {
 
     req.setHeader('Content-Type', 'application/json');
     req.setHeader('Duffel-Version', 'v2');
-    req.setHeader('Authorization', 'Bearer duffel_test__CAM1cJj9UGc35b3Bm-szB2opq1b_mvdLmlBmtie7L1');
-
+   req.setHeader( 'Authorization','Bearer YOUR_DUFFEL_API_KEY');
     String body =
 '{"data":{"slices":[{"origin":"' + origin +
 '","destination":"' + destination +

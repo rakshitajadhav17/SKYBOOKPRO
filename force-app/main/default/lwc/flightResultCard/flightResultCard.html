@@ -1,0 +1,44 @@
+<template>
+
+    <lightning-card title="Flight">
+
+        <div class="slds-p-around_medium">
+
+           <p><b>Airline:</b> {airline}</p>
+
+<p><b>Flight Number:</b> {flightNumber}</p>
+
+<p><b>Origin:</b> {origin}</p>
+
+<p><b>Destination:</b> {destination}</p>
+
+
+            <p>
+    <b>Departure:</b>
+    {formattedDeparture}
+</p>
+
+<p>
+    <b>Arrival:</b>
+    {formattedArrival}
+</p>
+
+            <p><b>Duration:</b> {formattedDuration}</p>
+
+           <p><b>Cabin:</b> {cabinClass}</p>
+
+<p><b>Price:</b> ₹ {price}</p>
+
+            <br/>
+
+            <lightning-button
+                variant="brand"
+                label="Select"
+                onclick={handleSelect}>
+            </lightning-button>
+
+        </div>
+
+    </lightning-card>
+
+</template>

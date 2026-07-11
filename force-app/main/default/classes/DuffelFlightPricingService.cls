@@ -15,7 +15,7 @@ req.setMethod('POST');
 
 req.setHeader('Content-Type', 'application/json');
 req.setHeader('Duffel-Version', 'v2');
-req.setHeader('Authorization', 'Bearer duffel_test__CAM1cJj9UGc35b3Bm-szB2opq1b_mvdLmlBmtie7L1');
+req.setHeader('Authorization', 'Bearer Bearer YOUR_DUFFEL_API_KEY');
 req.setBody(offerJson);
 HttpResponse res = http.send(req);
 

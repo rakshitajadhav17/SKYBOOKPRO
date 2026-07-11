@@ -1,0 +1,74 @@
+<template>
+
+    <lightning-card
+        title="Refund Status"
+        icon-name="utility:moneybag">
+
+        <template if:true={refund}>
+
+            <div class="slds-p-around_medium">
+
+                <lightning-progress-indicator
+                    current-step={currentStep}
+                    type="path">
+
+                    <lightning-progress-step
+                        label="Initiated"
+                        value="Initiated">
+                    </lightning-progress-step>
+
+                    <lightning-progress-step
+                        label="Processing"
+                        value="Processing">
+                    </lightning-progress-step>
+
+                    <lightning-progress-step
+                        label="Completed"
+                        value="Completed">
+                    </lightning-progress-step>
+
+                </lightning-progress-indicator>
+
+                <br/>
+
+                <p>
+
+                    <b>Refund Amount:</b>
+
+                    ₹ {refund.Refund_Amount__c}
+
+                </p>
+
+                <p>
+
+                    <b>Requested Date:</b>
+
+                    {refund.Requested_Date__c}
+
+                </p>
+
+                <p>
+
+                    <b>Status:</b>
+
+                    {refund.Refund_Status__c}
+
+                </p>
+
+            </div>
+
+        </template>
+
+        <template if:false={refund}>
+
+            <div class="slds-p-around_medium">
+
+                No refund available.
+
+            </div>
+
+        </template>
+
+    </lightning-card>
+
+</template>

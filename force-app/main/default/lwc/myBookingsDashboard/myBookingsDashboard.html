@@ -1,0 +1,141 @@
+<template>
+
+    <!-- Booking List -->
+    <template if:false={showDetails}>
+
+        <lightning-card icon-name="standard:travel_and_places">
+
+            <!-- Centered Title -->
+            <div slot="title" class="booking-title">
+                ✈ My Bookings
+            </div>
+
+            <!-- Booking Cards -->
+            <div class="booking-grid">
+
+                <template if:true={bookings}>
+
+                    <template for:each={bookings} for:item="booking">
+
+                        <div key={booking.Id} class="booking-card">
+
+                            <!-- Header -->
+                            <div class="card-header">
+
+                                <div class="airline">
+                                    ✈ {booking.Flight__r.Airline_Name__c}
+                                </div>
+
+                                <div class="status">
+                                    {booking.Booking_Status__c}
+                                </div>
+
+                            </div>
+
+                            <!-- PNR -->
+                            <div class="pnr">
+                                <strong>PNR:</strong> {booking.Name}
+                            </div>
+
+                            <!-- Route -->
+                            <div class="route">
+
+                                <div class="city">
+                                    {booking.Flight__r.Origin_Airport__c}
+                                </div>
+
+                                <div class="arrow">
+                                    ✈
+                                </div>
+
+                                <div class="city">
+                                    {booking.Flight__r.Destination_Airport__c}
+                                </div>
+
+                            </div>
+
+                            <!-- Flight Information -->
+                            <div class="details">
+
+                                <p>
+                                    <strong>Flight No</strong><br/>
+                                    {booking.Flight__r.Flight_Number__c}
+                                </p>
+
+                                <p>
+
+    <strong>Departure</strong><br/>
+
+    <lightning-formatted-date-time
+        value={booking.Flight__r.Departure_DateTime__c}
+        day="2-digit"
+        month="short"
+        year="numeric"
+        hour="2-digit"
+        minute="2-digit"
+        hour12>
+    </lightning-formatted-date-time>
+
+</p>
+
+                                <p>
+                                    <strong>Total Fare</strong><br/>
+                                    ₹ {booking.Total_Amount__c}
+                                </p>
+
+                            </div>
+
+                            <!-- Button -->
+                            <div class="button-area">
+
+                                <lightning-button
+                                    variant="brand"
+                                    label="View Details"
+                                    icon-name="utility:preview"
+                                    data-id={booking.Id}
+                                    onclick={viewBooking}>
+                                </lightning-button>
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
+                </template>
+
+                <!-- No Records -->
+                <template if:false={bookings}>
+
+                    <div class="slds-align_absolute-center slds-p-around_large">
+
+                        <p>No bookings found.</p>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+        </lightning-card>
+
+    </template>
+
+    <!-- Booking Details Page -->
+    <template if:true={showDetails}>
+
+        <lightning-button
+            variant="neutral"
+            label="Back to My Bookings"
+            icon-name="utility:back"
+            onclick={goBack}
+            class="slds-m-bottom_medium">
+        </lightning-button>
+
+        <c-booking-detail-view
+            booking-id={selectedBookingId}>
+        </c-booking-detail-view>
+
+    </template>
+
+</template>

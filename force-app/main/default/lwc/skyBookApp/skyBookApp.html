@@ -1,0 +1,220 @@
+<template>
+
+    <div class="main-container">
+
+        <!-- ================= HERO SECTION ================= -->
+
+        <div class="hero-section">
+
+            <div class="hero-overlay">
+
+                <h1 class="hero-title">
+                    ✈ SkyBook Pro
+                </h1>
+
+                <p class="hero-subtitle">
+                    Fly Smarter • Book Faster • Travel Better
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ================= BOOKING STEPS ================= -->
+
+        <div class="steps-container">
+
+            <div class="step">
+                🔍
+                <span>Search</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step">
+                ✈
+                <span>Select</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step">
+                👤
+                <span>Passenger</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step">
+                💳
+                <span>Payment</span>
+            </div>
+
+            <div class="line"></div>
+
+            <div class="step">
+                🎉
+                <span>Complete</span>
+            </div>
+
+        </div>
+
+        <!-- ================= SEARCH ================= -->
+
+        <div class="section glass-card">
+
+            <div class="section-title">
+                🔍 Search Flights
+            </div>
+
+            <div class="section-body">
+
+                <c-flight-search-form
+                    onflightsearch={handleFlightSearch}>
+                </c-flight-search-form>
+
+            </div>
+
+        </div>
+
+        <!-- ================= RESULTS ================= -->
+
+        <template if:true={hasFlightOffers}>
+
+            <div class="section flight-card">
+
+                <div class="section-title">
+                    🛫 Available Flights
+                </div>
+
+                <div class="section-body">
+
+                    <c-flight-results-list
+                        flight-offers={flightOffers}
+                        onofferselected={handleOfferSelected}>
+                    </c-flight-results-list>
+
+                </div>
+
+            </div>
+
+        </template>
+
+        <!-- ================= PASSENGER ================= -->
+
+        <template if:true={showPassengerForm}>
+
+    <div class="section passenger-card" data-id="passengerSection">
+
+                <div class="section-title">
+                    👤 Passenger Details
+                </div>
+
+                <div class="section-body">
+
+                    <c-passenger-details-form
+                        passenger-count="1"
+                        oncontinue={handleContinue}>
+                    </c-passenger-details-form>
+
+                </div>
+
+            </div>
+
+        </template>
+
+        <!-- ================= BOOKING CONFIRMATION ================= -->
+
+        <template if:true={showBookingConfirmation}>
+
+            <div class="section confirm-card" data-id="confirmationSection">
+
+                <div class="section-title">
+                    📋 Booking Confirmation
+                </div>
+
+                <div class="section-body">
+
+                    <c-booking-confirmation
+                        selected-offer={selectedOffer}
+                        passenger-details={passengerDetails}
+                        onbookingconfirmed={handleBookingConfirmed}>
+                    </c-booking-confirmation>
+
+                </div>
+
+            </div>
+
+        </template>
+
+        <!-- ================= PAYMENT ================= -->
+
+        <template if:true={showPayment}>
+
+            <div class="section payment-card" data-id="paymentSection">
+
+                <div class="section-title">
+                    💳 Secure Payment
+                </div>
+
+                <div class="section-body">
+
+                    <c-payment-gateway
+                        amount={selectedOffer.price}
+                        selected-offer={selectedOffer}
+                        passenger-details={passengerDetails}
+                        onpaymentsuccess={handlePaymentSuccess}>
+                    </c-payment-gateway>
+
+                </div>
+
+            </div>
+
+        </template>
+
+        <!-- ================= BOOKING SUCCESS ================= -->
+
+        <template if:true={showBookingSuccess}>
+
+           <div class="section success-card" data-id="successSection">
+
+                <div class="success-banner">
+
+                    🎉 Booking Confirmed Successfully
+
+                </div>
+
+                <div class="section-body">
+
+                    <c-booking-success
+                        selected-offer={selectedOffer}
+                        passenger-details={passengerDetails}>
+                    </c-booking-success>
+
+                    <br/>
+
+                    
+
+                </div>
+
+            </div>
+
+        </template>
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="footer">
+
+            <h2>✈ SkyBook Pro</h2>
+
+            <p>Book Flights • Manage Bookings • Travel With Confidence</p>
+
+            <p class="copyright">
+                © 2026 SkyBook Pro. All Rights Reserved.
+            </p>
+
+        </footer>
+
+    </div>
+
+</template>

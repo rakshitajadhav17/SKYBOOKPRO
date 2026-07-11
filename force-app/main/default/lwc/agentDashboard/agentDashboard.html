@@ -1,0 +1,299 @@
+<template>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+
+        <h1>📊 SkyBook Pro - Agent Dashboard</h1>
+
+        <p>Monitor bookings, revenue, refunds and passenger information</p>
+
+    </div>
+
+    <!-- ================= KPI CARDS ================= -->
+
+    <div class="dashboard-container">
+
+        <!-- Total Bookings -->
+
+        <div class="dashboard-card">
+
+            <lightning-card icon-name="utility:apps">
+
+                <div slot="title" class="card-title">
+                    📑 Total Bookings
+                </div>
+
+                <div
+                    class="card-value blue"
+                    onclick={loadAllBookings}>
+
+                    {dashboard.totalBookings}
+
+                </div>
+
+            </lightning-card>
+
+        </div>
+
+        <!-- Confirmed -->
+
+        <div class="dashboard-card">
+
+            <lightning-card icon-name="utility:success">
+
+                <div slot="title" class="card-title">
+                    ✅ Confirmed
+                </div>
+
+                <div
+                    class="card-value green"
+                    onclick={loadConfirmedBookings}>
+
+                    {dashboard.confirmedBookings}
+
+                </div>
+
+            </lightning-card>
+
+        </div>
+
+        <!-- Cancelled -->
+
+        <div class="dashboard-card">
+
+            <lightning-card icon-name="utility:close">
+
+                <div slot="title" class="card-title">
+                    ❌ Cancelled
+                </div>
+
+                <div
+                    class="card-value red"
+                    onclick={loadCancelledBookings}>
+
+                    {dashboard.cancelledBookings}
+
+                </div>
+
+            </lightning-card>
+
+        </div>
+
+        <!-- Revenue -->
+
+        <div class="dashboard-card">
+
+            <lightning-card icon-name="utility:money">
+
+                <div slot="title" class="card-title">
+                    💰 Revenue
+                </div>
+
+                <div
+                    class="card-value orange"
+                    onclick={loadRevenueBookings}>
+
+                    ₹ {dashboard.totalRevenue}
+
+                </div>
+
+            </lightning-card>
+
+        </div>
+
+        <!-- Refund -->
+
+        <div class="dashboard-card">
+
+            <lightning-card icon-name="utility:warning">
+
+                <div slot="title" class="card-title">
+                    ⏳ Pending Refunds
+                </div>
+
+                <div
+                    class="card-value purple"
+                    onclick={loadPendingRefunds}>
+
+                    {dashboard.pendingRefunds}
+
+                </div>
+
+            </lightning-card>
+
+        </div>
+
+    </div>
+
+    <!-- ================= DYNAMIC RESULT TABLE ================= -->
+
+    <template if:true={showResultTable}>
+
+        <div class="section-box" data-id="resultSection">
+
+            <lightning-card title={tableTitle}>
+
+                <div class="table-container">
+
+                    <!-- Booking Table -->
+
+                    <template if:true={isBookingTable}>
+
+                        <lightning-datatable
+                            key-field="Id"
+                            data={displayBookings}
+                            columns={bookingColumns}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+
+                    </template>
+
+                    <!-- Refund Table -->
+
+                    <template if:true={isRefundTable}>
+
+                        <lightning-datatable
+                            key-field="Id"
+                            data={displayRefunds}
+                            columns={refundColumns}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+
+                    </template>
+
+                </div>
+
+            </lightning-card>
+
+        </div>
+
+    </template>
+
+    <!-- ================= RECENT BOOKINGS ================= -->
+
+    <div class="section-box">
+
+        <lightning-card icon-name="standard:orders">
+
+            <div slot="title" class="section-title">
+
+                🛫 Recent Bookings
+
+            </div>
+
+            <div class="table-container">
+
+                <lightning-datatable
+                    key-field="Id"
+                    data={recentBookings}
+                    columns={bookingColumns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+
+            </div>
+
+        </lightning-card>
+
+    </div>
+
+    <!-- ================= RECENT REFUNDS ================= -->
+
+    <div class="section-box">
+
+        <lightning-card icon-name="standard:refund">
+
+            <div slot="title" class="section-title">
+
+                💸 Recent Refunds
+
+            </div>
+
+            <div class="table-container">
+
+                <lightning-datatable
+                    key-field="Id"
+                    data={recentRefunds}
+                    columns={refundColumns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+
+            </div>
+
+        </lightning-card>
+
+    </div>
+
+    <!-- ================= PASSENGER SEARCH ================= -->
+
+    <div class="section-box">
+
+        <lightning-card icon-name="standard:people">
+
+            <div slot="title" class="section-title">
+
+                👤 Passenger Search
+
+            </div>
+
+            <div class="search-area">
+
+                <lightning-input
+                    label="Passenger Name"
+                    placeholder="Enter passenger name..."
+                    value={searchKey}
+                    onchange={handleSearch}>
+                </lightning-input>
+
+                <br/>
+
+                <lightning-button
+                    variant="brand"
+                    label="🔍 Search Passenger"
+                    onclick={searchPassenger}>
+                </lightning-button>
+
+            </div>
+
+            <div class="table-container">
+
+                <lightning-datatable
+                    key-field="Id"
+                    data={contacts}
+                    columns={contactColumns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+
+            </div>
+
+        </lightning-card>
+
+    </div>
+
+    <!-- ================= MATCHING BOOKINGS ================= -->
+
+    <div class="section-box">
+
+        <lightning-card icon-name="standard:travel_and_places">
+
+            <div slot="title" class="section-title">
+
+                ✈ Matching Bookings
+
+            </div>
+
+            <div class="table-container">
+
+                <lightning-datatable
+                    key-field="Id"
+                    data={bookings}
+                    columns={bookingSearchColumns}
+                    hide-checkbox-column>
+                </lightning-datatable>
+
+            </div>
+
+        </lightning-card>
+
+    </div>
+
+</template>

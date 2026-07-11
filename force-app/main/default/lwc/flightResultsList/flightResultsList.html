@@ -1,0 +1,24 @@
+<template>
+
+    <template if:true={flightOffers}>
+
+        <div class="flight-grid">
+
+            <template for:each={flightOffers} for:item="offer">
+
+                <div key={offer.offerId} class="flight-item">
+
+                    <c-flight-result-card
+                        offer={offer}
+                        onofferselected={handleOfferSelected}>
+                    </c-flight-result-card>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </template>
+
+</template>

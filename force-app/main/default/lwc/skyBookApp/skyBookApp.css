@@ -1,0 +1,485 @@
+/*==================================================
+                MAIN BACKGROUND
+===================================================*/
+
+.main-container{
+
+    min-height:100vh;
+
+    padding:30px;
+
+    background:linear-gradient(
+        135deg,
+        #F8FBFF 0%,
+        #EEF7FF 25%,
+        #E3F2FD 55%,
+        #F7FBFF 100%
+    );
+
+}
+
+
+/*==================================================
+                HERO SECTION
+===================================================*/
+
+.hero-section{
+
+    height:280px;
+
+    border-radius:30px;
+
+    background:linear-gradient(
+        135deg,
+        #1976D2,
+        #42A5F5,
+        #64B5F6
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+    box-shadow:0 15px 35px rgba(33,150,243,.25);
+
+}
+
+.hero-overlay{
+
+    color:white;
+
+}
+
+.hero-title{
+
+    font-size:55px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    margin-bottom:12px;
+
+}
+
+.hero-subtitle{
+
+    font-size:22px;
+
+    opacity:.95;
+
+}
+
+
+/*==================================================
+                BOOKING STEPS
+===================================================*/
+
+.steps-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:40px;
+
+}
+
+.step{
+
+    width:105px;
+
+    height:105px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:#1565C0;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+    transition:.3s;
+
+}
+
+.step span{
+
+    margin-top:6px;
+
+    font-size:13px;
+
+}
+
+.step:hover{
+
+    background:#1976D2;
+
+    color:white;
+
+    transform:translateY(-8px);
+
+}
+
+.line{
+
+    width:55px;
+
+    height:5px;
+
+    border-radius:20px;
+
+    background:#64B5F6;
+
+}
+
+
+/*==================================================
+                COMMON SECTION
+===================================================*/
+
+.section{
+
+    width:95%;
+
+    margin:35px auto;
+
+}
+
+
+/*==================================================
+                ALL CARDS
+===================================================*/
+
+.glass-card,
+.flight-card,
+.passenger-card,
+.confirm-card,
+.success-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.10);
+
+    transition:.35s;
+
+    border:1px solid #E3F2FD;
+
+}
+
+.glass-card:hover,
+.flight-card:hover,
+.passenger-card:hover,
+.confirm-card:hover,
+.success-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 20px 35px rgba(0,0,0,.15);
+
+}
+
+
+/*==================================================
+                SECTION TITLES
+===================================================*/
+
+.section-title{
+
+    padding:18px;
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(
+        90deg,
+        #2196F3,
+        #42A5F5
+    );
+
+}
+
+.section-body{
+
+    padding:28px;
+
+}
+
+
+/*==================================================
+                SUCCESS
+===================================================*/
+
+.success-banner{
+
+    background:linear-gradient(
+        90deg,
+        #43A047,
+        #81C784
+    );
+
+    color:white;
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    padding:22px;
+
+}
+
+
+/*==================================================
+                DASHBOARD
+===================================================*/
+
+.dashboard-section{
+
+    width:95%;
+
+    margin:45px auto;
+
+}
+
+.dashboard-title{
+
+    text-align:center;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    color:#1565C0;
+
+    margin-bottom:20px;
+
+}
+
+.dashboard-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.10);
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+
+/*==================================================
+                FOOTER
+===================================================*/
+
+.footer{
+
+    margin-top:60px;
+
+    background:#1565C0;
+
+    color:white;
+
+    border-radius:25px 25px 0 0;
+
+    text-align:center;
+
+    padding:35px;
+
+}
+
+.footer h2{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+.footer p{
+
+    margin:8px;
+
+}
+
+.copyright{
+
+    color:#E3F2FD;
+
+}
+
+
+/*==================================================
+            LIGHTNING COMPONENTS
+===================================================*/
+
+lightning-button{
+
+    --slds-c-button-brand-color-background:#1976D2;
+
+    --slds-c-button-brand-color-background-hover:#0D47A1;
+
+    --slds-c-button-brand-color-border:#1976D2;
+
+}
+
+lightning-input,
+lightning-combobox,
+lightning-textarea{
+
+    margin-bottom:15px;
+
+}
+
+
+/*==================================================
+                RESPONSIVE
+===================================================*/
+
+@media(max-width:900px){
+
+.hero-title{
+
+font-size:42px;
+
+}
+
+.hero-subtitle{
+
+font-size:18px;
+
+}
+
+.step{
+
+width:90px;
+
+height:90px;
+
+font-size:28px;
+
+}
+
+.line{
+
+display:none;
+
+}
+
+.section{
+
+width:100%;
+
+}
+
+.dashboard-title{
+
+font-size:28px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.main-container{
+
+padding:15px;
+
+}
+
+.hero-section{
+
+height:220px;
+
+}
+
+.hero-title{
+
+font-size:32px;
+
+}
+
+.hero-subtitle{
+
+font-size:15px;
+
+}
+
+.step{
+
+width:75px;
+
+height:75px;
+
+font-size:22px;
+
+}
+
+.step span{
+
+font-size:11px;
+
+}
+
+.section-body{
+
+padding:18px;
+
+}
+
+}
+.payment-card{
+
+    background: linear-gradient(135deg,#4facfe,#00f2fe);
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+
+    margin-top:25px;
+
+}

@@ -1,0 +1,143 @@
+<template>
+
+    <lightning-card title="💳 Secure Payment">
+
+        <div class="slds-p-around_large">
+
+            <div class="slds-text-align_center">
+
+                <h2 class="slds-text-heading_medium">
+                    Choose Payment Method
+                </h2>
+
+            </div>
+
+            <br/>
+
+            <lightning-radio-group
+                name="payment"
+                label="Payment Method"
+                options={paymentOptions}
+                value={selectedPayment}
+                onchange={handlePayment}>
+            </lightning-radio-group>
+
+            <template if:true={showCard}>
+
+                <br/>
+
+                <lightning-input
+                    label="Card Holder Name"
+                    value={cardName}
+                    onchange={handleName}>
+                </lightning-input>
+
+                <lightning-input
+                    label="Card Number"
+                    maxlength="16"
+                    value={cardNumber}
+                    onchange={handleCard}>
+                </lightning-input>
+
+                <div class="slds-grid slds-gutters">
+
+                    <div class="slds-col">
+
+                        <lightning-input
+                            label="Expiry"
+                            placeholder="MM/YY"
+                            value={expiry}
+                            onchange={handleExpiry}>
+                        </lightning-input>
+
+                    </div>
+
+                    <div class="slds-col">
+
+                        <lightning-input
+                            type="password"
+                            label="CVV"
+                            maxlength="3"
+                            value={cvv}
+                            onchange={handleCVV}>
+                        </lightning-input>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+            <template if:true={showUPI}>
+
+                <br/>
+
+                <lightning-input
+                    label="UPI ID"
+                    placeholder="example@ybl"
+                    value={upiId}
+                    onchange={handleUPI}>
+                </lightning-input>
+
+            </template>
+
+            <template if:true={showNetBanking}>
+
+                <br/>
+
+                <lightning-combobox
+                    label="Select Bank"
+                    options={bankOptions}
+                    value={selectedBank}
+                    onchange={handleBank}>
+                </lightning-combobox>
+
+            </template>
+
+            <br/>
+
+            <div class="payment-box">
+
+                <h2>
+                    Total Amount
+                </h2>
+
+                <h1>
+                    ₹ {amount}
+                </h1>
+
+            </div>
+
+            <br/>
+
+            <div class="logo-row">
+
+                <span class="logo visa">💳 VISA</span>
+
+                <span class="logo master">💳 MasterCard</span>
+
+                <span class="logo gpay">🟢 Google Pay</span>
+
+                <span class="logo phonepe">🟣 PhonePe</span>
+
+                <span class="logo paytm">🔵 Paytm</span>
+
+            </div>
+
+            <br/>
+
+            <div class="slds-align_absolute-center">
+
+                <lightning-button
+                    variant="brand"
+                    label="🔒 Pay Securely"
+                    onclick={pay}>
+                </lightning-button>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

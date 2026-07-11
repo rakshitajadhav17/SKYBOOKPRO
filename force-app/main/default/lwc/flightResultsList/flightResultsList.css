@@ -1,0 +1,17 @@
+.flight-grid{
+
+    display:grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap:16px;
+
+    padding:16px;
+
+}
+
+.flight-item{
+
+    width:100%;
+
+}
