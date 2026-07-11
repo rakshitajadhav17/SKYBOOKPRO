@@ -49,7 +49,7 @@ public class BookingTriggerHandler {
 
     public void afterInsert(List<Booking__c> bookings){
 
-        // Booking confirmation email can be added later.
+        // Booking confirmation email is handeled by Flow.
 
     }
 
@@ -142,7 +142,7 @@ if(!cases.isEmpty()){
 //==========================
 // Send Cancellation Email
 //==========================
-
+System.debug('Booking IDs = ' + bookingIds);
 List<Booking__c> bookingsForEmail = [
 
     SELECT Id,
@@ -162,7 +162,7 @@ List<Booking__c> bookingsForEmail = [
     WHERE Id IN :bookingIds
 
 ];
-
+System.debug('Bookings For Email = ' + bookingsForEmail.size());
 List<Messaging.SingleEmailMessage> emails =
     new List<Messaging.SingleEmailMessage>();
 
@@ -226,16 +226,36 @@ booking.Cancellation_Reason__c +
 if(!emails.isEmpty()){
 
     try{
-        
+
         System.debug('Emails Count = ' + emails.size());
 
-        Messaging.sendEmail(emails);
+        Messaging.SendEmailResult[] results =
+            Messaging.sendEmail(emails);
 
-        System.debug('Cancellation Email Sent');
+        for(Messaging.SendEmailResult r : results){
+
+            if(r.isSuccess()){
+
+                System.debug('EMAIL SENT SUCCESSFULLY');
+
+            }
+            else{
+
+                for(Messaging.SendEmailError err : r.getErrors()){
+
+                    System.debug('EMAIL ERROR : ' + err.getMessage());
+
+                }
+
+            }
+
+        }
 
     }
     catch(Exception e){
-        System.debug('Email Error : ' + e.getMessage());
+
+        System.debug('Exception : ' + e.getMessage());
+
     }
 
 }

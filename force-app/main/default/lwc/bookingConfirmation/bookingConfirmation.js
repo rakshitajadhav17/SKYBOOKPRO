@@ -178,4 +178,52 @@ export default class BookingConfirmation extends LightningElement {
 
     }
 
+            get airline() {
+
+            return this.selectedOffer
+                ? this.selectedOffer.airline
+                : '';
+
+        }
+
+        get origin() {
+
+            return this.selectedOffer
+                ? this.selectedOffer.origin
+                : '';
+
+        }
+
+        get destination() {
+
+            return this.selectedOffer
+                ? this.selectedOffer.destination
+                : '';
+
+        }
+
+        get flightNumber() {
+
+            return this.selectedOffer
+                ? this.selectedOffer.flightNumber
+                : '';
+
+        }
+
+        get cabinClass() {
+
+            return this.selectedOffer
+                ? this.selectedOffer.cabinClass
+                : '';
+
+        }
+
+        get price() {
+
+            return this.selectedOffer
+                ? this.selectedOffer.price
+                : '';
+
+        }
+
 }
