@@ -204,13 +204,13 @@ All Jest tests passed successfully.
 
 # 🔐 API Security
 
-For security reasons, this repository **does not include live API credentials**.
+For security reasons, this repository **does not include live Duffel API credentials**.
 
-- Duffel API Token removed
-- Authorization keys removed
-- Secrets are excluded from the repository
+* Live Duffel API token has been removed.
+* Authorization keys and secrets are not included in this repository.
+* Before running the application, replace the placeholder API key (for example, `YOUR_DUFFEL_API_KEY`) with **your own valid Duffel API token** or configure it using a secure method such as Salesforce Named Credentials.
 
-Anyone using this project should configure their own API credentials before running the application.
+Without a valid Duffel API token, the flight search functionality will not return live flight data.
 
 ---
 
