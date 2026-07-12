@@ -1,98 +1,86 @@
 public with sharing class DuffelService {
+  public static String testConnection() {
+    Http http = new Http();
+    HttpRequest req = new HttpRequest();
 
-    public static String testConnection() {
+    req.setEndpoint('callout:Duffel_API');
+    req.setMethod('GET');
 
-        Http http = new Http();
-        HttpRequest req = new HttpRequest();
+    req.setHeader('Duffel-Version', 'v2');
+    req.setHeader('Authorization', 'YOUR_DUFFEL_API');
 
-        req.setEndpoint('callout:Duffel_API');
-        req.setMethod('GET');
+    HttpResponse res = http.send(req);
 
-        req.setHeader('Duffel-Version', 'v2');
-        req.setHeader(
-            'Authorization',
-            'Bearer duffel_test__CAM1cJj9UGc35b3Bm-szB2opq1b_mvdLmlBmtie7L1'
-        );
+    System.debug('STATUS CODE = ' + res.getStatusCode());
+    System.debug('STATUS = ' + res.getStatus());
+    System.debug('BODY = ' + res.getBody());
 
-        HttpResponse res = http.send(req);
+    return res.getBody();
+  }
 
-        System.debug('STATUS CODE = ' + res.getStatusCode());
-        System.debug('STATUS = ' + res.getStatus());
-        System.debug('BODY = ' + res.getBody());
+  public static String createOfferRequest(
+    String origin,
+    String destination,
+    Date departureDate,
+    Integer adults,
+    String cabinClass
+  ) {
+    Http http = new Http();
+    HttpRequest req = new HttpRequest();
 
-        return res.getBody();
+    req.setEndpoint('callout:Duffel_API/air/offer_requests');
+    req.setMethod('POST');
 
+    req.setHeader('Content-Type', 'application/json');
+    req.setHeader('Duffel-Version', 'v2');
+    req.setHeader('Authorization', 'YOUR_DUFFEL_API');
+
+    //=========================================
+    // Convert Salesforce value to Duffel value
+    //=========================================
+
+    String duffelCabin = 'economy';
+
+    if (cabinClass == 'Business') {
+      duffelCabin = 'business';
+    } else if (cabinClass == 'First Class') {
+      duffelCabin = 'first';
+    } else {
+      duffelCabin = 'economy';
     }
 
-    public static String createOfferRequest(
-        String origin,
-        String destination,
-        Date departureDate,
-        Integer adults,
-        String cabinClass
-    ) {
+    String body =
+      '{' +
+      '"data":{' +
+      '"slices":[{' +
+      '"origin":"' +
+      origin +
+      '",' +
+      '"destination":"' +
+      destination +
+      '",' +
+      '"departure_date":"' +
+      String.valueOf(departureDate) +
+      '"' +
+      '}],' +
+      '"passengers":[{' +
+      '"type":"adult"' +
+      '}],' +
+      '"cabin_class":"' +
+      duffelCabin +
+      '"' +
+      '}' +
+      '}';
 
-        Http http = new Http();
-        HttpRequest req = new HttpRequest();
+    System.debug('Request Body: ' + body);
 
-        req.setEndpoint('callout:Duffel_API/air/offer_requests');
-        req.setMethod('POST');
+    req.setBody(body);
 
-        req.setHeader('Content-Type', 'application/json');
-        req.setHeader('Duffel-Version', 'v2');
-        req.setHeader(
-            'Authorization',
-            'Bearer duffel_test__CAM1cJj9UGc35b3Bm-szB2opq1b_mvdLmlBmtie7L1'
-        );
+    HttpResponse res = http.send(req);
 
-        //=========================================
-        // Convert Salesforce value to Duffel value
-        //=========================================
+    System.debug('Status Code: ' + res.getStatusCode());
+    System.debug('Response Body: ' + res.getBody());
 
-        String duffelCabin = 'economy';
-
-        if(cabinClass == 'Business'){
-
-            duffelCabin = 'business';
-
-        }
-        else if(cabinClass == 'First Class'){
-
-            duffelCabin = 'first';
-
-        }
-        else{
-
-            duffelCabin = 'economy';
-
-        }
-
-        String body =
-        '{' +
-            '"data":{' +
-                '"slices":[{' +
-                    '"origin":"' + origin + '",' +
-                    '"destination":"' + destination + '",' +
-                    '"departure_date":"' + String.valueOf(departureDate) + '"' +
-                '}],' +
-                '"passengers":[{' +
-                    '"type":"adult"' +
-                '}],' +
-                '"cabin_class":"' + duffelCabin + '"' +
-            '}' +
-        '}';
-
-        System.debug('Request Body: ' + body);
-
-        req.setBody(body);
-
-        HttpResponse res = http.send(req);
-
-        System.debug('Status Code: ' + res.getStatusCode());
-        System.debug('Response Body: ' + res.getBody());
-
-        return res.getBody();
-
-    }
-
+    return res.getBody();
+  }
 }
